@@ -1,4 +1,9 @@
-forge-ctplugin
-==============
+JBoss Forge ct-Plugin
+=====================
 
-forge continuous testing plugin
+A continuous testing plugin for [JBoss Forge](http://forge.jboss.org/)
+
+Let Maven continous test your project via
+
+    ct run
+
