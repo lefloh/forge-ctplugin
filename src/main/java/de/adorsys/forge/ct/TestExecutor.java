@@ -24,6 +24,8 @@ import org.jboss.forge.project.Project;
 import org.jboss.forge.shell.ShellMessages;
 import org.jboss.forge.shell.ShellPrintWriter;
 
+import de.adorsys.forge.ct.SilentShellBuffer.SilentShellBufferQualifier;
+
 /**
  * Executes mvn test and prints the result
  * Note: we just execute mvn test so if your source-classes are compiled by your IDE
@@ -38,16 +40,20 @@ public class TestExecutor {
 	@Inject
 	private ShellPrintWriter out;
 	
+	@Inject
+	@SilentShellBufferQualifier
+	private ShellBuffer buffer;
+	
 	public boolean execute(File file) {
 		
 		ShellMessages.info(out, "file changed: " + file.getAbsolutePath());
 		ShellMessages.info(out, "building...");
 		
-		ShellBuffer buffer = new ShellBuffer();
 		MavenCoreFacet mvnFacet = project.getFacet(MavenCoreFacet.class);
 		boolean success = mvnFacet.executeMaven(buffer, new String[] {"test"});
 	
 		MvnResultParser parser = new MvnResultParser(buffer.getContent());		
+		buffer.reset();
 		
 		if (success) {
 			ShellMessages.success(out, "build and test successful");
@@ -85,4 +91,5 @@ public class TestExecutor {
 		out.println();
 		return true;
 	}
+	
 }

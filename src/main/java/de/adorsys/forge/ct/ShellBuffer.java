@@ -1,86 +1,37 @@
+/**
+ * Copyright (C) 2012 Florian Hirsch fhi@adorsys.de
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package de.adorsys.forge.ct;
 
-import javax.enterprise.inject.Alternative;
-
-import org.jboss.forge.shell.Shell;
-import org.jboss.forge.shell.ShellColor;
 import org.jboss.forge.shell.ShellPrintWriter;
 
-import com.google.inject.Inject;
-
 /**
- * Buffers Output, prints nothing to the console
- * @author Florian Hirsch - adorsys
+ * Buffering ShellPrintWriter
+ * Should not write directly to a shell
+ * @author Florian Hirsch
  */
-@Alternative
-public class ShellBuffer implements ShellPrintWriter {
+public interface ShellBuffer extends ShellPrintWriter {
 
-	@Inject
-	private Shell shell;
-	
-	private StringBuilder sb = new StringBuilder();
-	
-	@Override
-	public void write(int b) {
-		sb.append(b);
-	}
-
-	@Override
-	public void write(byte b) {
-		sb.append((char) b);
-	}
-
-	@Override
-	public void write(byte[] b) {
-		sb.append(new String(b));
-	}
-
-	@Override
-	public void write(byte[] b, int offset, int length) {
-		sb.append(new String(b, offset, length));
-	}
-
-	@Override
-	public void print(String output) {
-		sb.append(output);
-	}
-
-	@Override
-	public void println(String output) {
-		sb.append(output).append('\n');
-	}
-
-	@Override
-	public void println() {
-		sb.append('\n');
-	}
-
-	@Override
-	public void print(ShellColor color, String output) {
-		sb.append(renderColor(color, output));
-	}
-
-	@Override
-	public void println(ShellColor color, String output) {
-		sb.append(renderColor(color, output)).append('\n');
-	}
-
-	@Override
-	public String renderColor(ShellColor color, String output) {
-		return shell.renderColor(color, output);
-	}
-
-	@Override
-	public void flush() {
-		// Don't flush!
-	}
-	
 	/**
 	 * gets the bufferd content
-	 * @return
 	 */
-	public String getContent() {
-		return sb.toString();
-	}
+	String getContent();
+	
+	/**
+	 * resets the buffered content
+	 */
+	void reset();
 	
 }
