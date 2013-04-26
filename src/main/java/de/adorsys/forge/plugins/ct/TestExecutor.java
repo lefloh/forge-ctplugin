@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.adorsys.forge.ct;
+package de.adorsys.forge.plugins.ct;
 
 import java.io.File;
 
@@ -24,7 +24,7 @@ import org.jboss.forge.project.Project;
 import org.jboss.forge.shell.ShellMessages;
 import org.jboss.forge.shell.ShellPrintWriter;
 
-import de.adorsys.forge.ct.SilentShellBuffer.SilentShellBufferQualifier;
+import de.adorsys.forge.plugins.ct.SilentShellBuffer.SilentShellBufferQualifier;
 
 /**
  * Executes mvn test and prints the result

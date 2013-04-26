@@ -1,4 +1,4 @@
-package de.adorsys.forge.ct;
+package de.adorsys.forge.plugins.ct;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -12,7 +12,7 @@ import org.jboss.forge.shell.ShellColor;
 
 import com.google.inject.Inject;
 
-import de.adorsys.forge.ct.SilentShellBuffer.SilentShellBufferQualifier;
+import de.adorsys.forge.plugins.ct.SilentShellBuffer.SilentShellBufferQualifier;
 
 /**
  * Buffers Output, prints nothing to the console

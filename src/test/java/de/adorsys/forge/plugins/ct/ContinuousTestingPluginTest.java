@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.adorsys.forge.ct;
+package de.adorsys.forge.plugins.ct;
 
 import javax.inject.Inject;
 
@@ -22,6 +22,8 @@ import org.jboss.forge.project.dependencies.DependencyResolver;
 import org.jboss.forge.test.AbstractShellTest;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Test;
+
+import de.adorsys.forge.plugins.ct.ContinuousTestingPlugin;
 
 /**
  * Tests the ContinuousTestingPlugin

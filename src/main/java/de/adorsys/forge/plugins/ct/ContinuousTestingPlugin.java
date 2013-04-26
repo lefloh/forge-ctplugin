@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.adorsys.forge.ct;
+package de.adorsys.forge.plugins.ct;
 
 import java.io.File;
 
